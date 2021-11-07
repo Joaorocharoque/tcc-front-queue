@@ -1,17 +1,52 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { createServer, Model } from 'miragejs';
+import { App } from './App';
+
+createServer({
+  models: {
+    queue: Model,
+  },
+
+  seeds(server){
+    server.db.loadData({
+      queues: [
+        {
+          id: 1,
+          name: "João",
+          petName: "Cher",
+          position: 1,
+          createdAt: new Date('2021-02-12 09:00:00'),
+        },
+        {
+          id: 2,
+          name: "Jaquelini",
+          petName: "Belinha",
+          position: 2,
+          createdAt: new Date('2021-02-12 09:00:00'),
+        }
+      ]
+    })
+  },
+
+  routes(){
+    this.namespace = 'api'
+
+    this.get('/queue', () => {
+      return this.schema.all('queue')
+    })
+
+    this.post('/queue', (schema, request) => {
+      const data = JSON.parse(request.requestBody)
+
+      return schema.create('queue', data)
+    })
+  }
+})
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>,
+    document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
