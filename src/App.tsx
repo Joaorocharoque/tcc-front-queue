@@ -4,6 +4,9 @@ import { GlobalStyle } from "./styles/global";
 import { useState } from "react";
 import { NewQueueItemModal } from "./components/NewQueueItemModal";
 import { QueueProvider } from "./hooks/useQueue";
+import Navbar from "./components/Navbar";
+import { BrowserRouter as Router } from 'react-router-dom';
+
 
 export function App() {
   const [isNewQueueItemModalOpen, setIsNewQueueItemModalOpen] = useState(false);
@@ -17,16 +20,20 @@ export function App() {
   }
 
   return (
+    <>
+     <Router>
+      <Navbar />
+    </Router>
+
     <QueueProvider>
-      <Header onHandleOpenNewQueueItemModal={handleOpenNewQueueItemModal}/>
-      <Dashboard/>
+        <Header onHandleOpenNewQueueItemModal={handleOpenNewQueueItemModal} />
+        <Dashboard />
 
-      <NewQueueItemModal
-        isOpen={isNewQueueItemModalOpen}
-        onRequestClose={handleCloseNewQueueItemModal}
-      />
+        <NewQueueItemModal
+          isOpen={isNewQueueItemModalOpen}
+          onRequestClose={handleCloseNewQueueItemModal} />
 
-      <GlobalStyle/>
-    </QueueProvider>
+        <GlobalStyle />
+      </QueueProvider></>
   );
 }
