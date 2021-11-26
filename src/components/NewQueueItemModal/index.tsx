@@ -15,22 +15,14 @@ interface NewQueueItemModalProps{
 export function NewQueueItemModal({isOpen, onRequestClose} : NewQueueItemModalProps) {
     const { createQueue } = useQueue();
 
-    const [name, setName] = useState('');
-    const [petName, setPetName] = useState('');
-    const [position, setPosition] = useState(0);
+    const [customerId, setCustomerId] = useState(0);
 
     async function handleCreateNewQueueItem(event: FormEvent) {
         event.preventDefault();
 
-        await createQueue({
-            name,
-            petName,
-            position
-        })
+        await createQueue(customerId)
 
-        setName('');
-        setPosition(0);
-        setPetName('');
+        setCustomerId(0);
 
         onRequestClose();
     }
@@ -50,21 +42,9 @@ export function NewQueueItemModal({isOpen, onRequestClose} : NewQueueItemModalPr
                 <h2>Adicionar na Fila</h2>
 
                 <input 
-                    placeholder="Nome"
-                    value={name}
-                    onChange={event => setName(event.target.value)}
-                />
-
-                <input type="number"
-                    placeholder="Posição"
-                    value={position}
-                    onChange={event => setPosition(Number(event.target.value))}
-                />
-
-                <input 
-                    placeholder="Nome Pet"
-                    value={petName}
-                    onChange={event => setPetName(event.target.value)}
+                    placeholder="Customer ID"
+                    value={customerId}
+                    onChange={event => setCustomerId(Number(event.target.value))}
                 />
 
                 <button type="submit">

@@ -4,7 +4,6 @@ import { Home } from "./pages/Home";
 import { TabelaSec } from "./pages/TabelaSec";
 import { TabelaVet } from "./pages/TabelaVet";
 
-
 function App() {
 
   return (

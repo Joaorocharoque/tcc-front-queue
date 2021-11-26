@@ -3,13 +3,23 @@ import { api } from "../services/api";
 
 interface QueueItem {
     id: number,
-    name: string,
-    petName: string,
     position: number,
-    createdAt: string,
+    customer: {
+        firstName: string,
+        lastName: string,
+        email: string,
+        category: string,
+        pets: QueuePetItem[]
+    }
 }
 
-type QueueItemInput = Omit<QueueItem, 'id' | 'createdAt'>
+interface QueuePetItem {
+    id: number,
+    name: number,
+    breed: string
+}
+
+type QueueItemInput = Omit<QueueItem, 'id'>
 
 interface QueueItemProviderProps {
     children: ReactNode
@@ -17,7 +27,7 @@ interface QueueItemProviderProps {
 
 interface QueueContextData {
     queue: QueueItem[],
-    createQueue: (queueInput: QueueItemInput) => Promise<void>;
+    createQueue: (customerId: number) => Promise<void>;
 }
 
 export const QueueContext = createContext<QueueContextData>(
@@ -28,22 +38,23 @@ export function QueueProvider({ children } : QueueItemProviderProps){
     const[queue, setQueue] = useState<QueueItem[]>([]);
 
     useEffect(() => {        
-        api.get('/queue')
-            .then(response => setQueue(response.data.queues))
+        api.get('/appointmentQueue')
+            .then(response => {
+                console.log(response.data)
+                setQueue(response.data)
+            })
     }, [])
 
-    async function createQueue(queueInput: QueueItemInput){
-        const response = await api.post('/queue/', { 
-            ...queueInput,
-            createdAt: new Date(),
+    async function createQueue(customerId: number){
+        const response = await api.post('/appointmentQueue/', { 
+            customerId
         })
 
-        console.log(response.data.queue)
-
-        setQueue([
-            ...queue,
-            response.data.queue
-        ])
+        api.get('/appointmentQueue')
+            .then(response => {
+                console.log(response.data)
+                setQueue(response.data)
+        })
     }
 
     return (

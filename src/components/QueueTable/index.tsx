@@ -12,7 +12,6 @@ export function QueueTable() {
                         <th>Posição</th>
                         <th>Nome</th>
                         <th>Pet</th>
-                        <th>Data</th>
                     </tr>
                 </thead>
 
@@ -21,13 +20,8 @@ export function QueueTable() {
                         queue.map(queueItem => (
                             <tr key={queueItem.id}>
                                 <td>{queueItem.position}</td>
-                                <td>{queueItem.name}</td>
-                                <td>{queueItem.petName}</td>
-                                <td>
-                                    {
-                                        new Intl.DateTimeFormat('pt-BR').format(new Date(queueItem.createdAt))
-                                    }
-                                </td>
+                                <td>{queueItem.customer.firstName}</td>
+                                <td>Cher</td>
                             </tr>
                         ))
                     }
