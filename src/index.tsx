@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createServer, Model } from 'miragejs';
-import { App } from './App';
+import App from './App';
 
 createServer({
   models: {
@@ -23,7 +23,7 @@ createServer({
           name: "Jaquelini",
           petName: "Belinha",
           position: 2,
-          createdAt: new Date('2021-02-12 09:00:00'),
+          createdAt: new Date('2021-02-21 09:00:00'),
         }
       ]
     })
@@ -46,7 +46,7 @@ createServer({
 
 ReactDOM.render(
     <React.StrictMode>
-      <App />
+      < App />
     </React.StrictMode>,
     document.getElementById('root')
 );

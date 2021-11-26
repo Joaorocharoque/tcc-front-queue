@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Nav,
   NavLink,
@@ -12,26 +11,23 @@ const Navbar = () => {
   return (
     <>
       <Nav>
-        <NavLink to='/'>
+      <NavLink to='/'>
          <h1>QueueVet</h1>
         </NavLink>
         <Bars />
         <NavMenu>
-          <NavLink to='/about' activeStyle>
-            Sobre
+        <NavLink to='/' activeStyle>
+            Fila
           </NavLink>
-          <NavLink to='/services' activeStyle>
-            Serviços
+          <NavLink to='/TabelaSec' activeStyle>
+            Secretária
           </NavLink>
-          <NavLink to='/contact-us' activeStyle>
-            Contato
+          <NavLink to='/TabelaVet' activeStyle>
+            Veterinários
           </NavLink>
-          <NavLink to='/tabela' activeStyle>
-            Tabela
-          </NavLink>
-        </NavMenu>
-        <NavBtn>
-            <NavBtnLink to='/signin'>Login</NavBtnLink>
+          </NavMenu>
+          <NavBtn>
+            <NavBtnLink to='/'>Login</NavBtnLink>
         </NavBtn>
       </Nav>
     </>

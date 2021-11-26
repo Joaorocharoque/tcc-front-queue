@@ -1,39 +1,21 @@
-import { Dashboard } from "./components/Dashboard";
-import { Header } from "./components/Header";
-import { GlobalStyle } from "./styles/global";
-import { useState } from "react";
-import { NewQueueItemModal } from "./components/NewQueueItemModal";
-import { QueueProvider } from "./hooks/useQueue";
 import Navbar from "./components/Navbar";
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Home } from "./pages/Home";
+import { TabelaSec } from "./pages/TabelaSec";
+import { TabelaVet } from "./pages/TabelaVet";
 
 
-export function App() {
-  const [isNewQueueItemModalOpen, setIsNewQueueItemModalOpen] = useState(false);
-
-  function handleOpenNewQueueItemModal(){
-    setIsNewQueueItemModalOpen(true);
-  }
-
-  function handleCloseNewQueueItemModal(){
-    setIsNewQueueItemModalOpen(false);
-  }
+function App() {
 
   return (
-    <>
      <Router>
       <Navbar />
+      <Routes>
+      <Route path="/TabelaVet" element={<TabelaVet />} />
+      <Route path="/TabelaSec" element={<TabelaSec />} />
+      <Route path="/" element={<Home />} />
+      </Routes>
     </Router>
-
-    <QueueProvider>
-        <Header onHandleOpenNewQueueItemModal={handleOpenNewQueueItemModal} />
-        <Dashboard />
-
-        <NewQueueItemModal
-          isOpen={isNewQueueItemModalOpen}
-          onRequestClose={handleCloseNewQueueItemModal} />
-
-        <GlobalStyle />
-      </QueueProvider></>
   );
 }
+export default App;
