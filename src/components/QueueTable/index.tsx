@@ -5,11 +5,7 @@ import deleteImg from '../../assets/delete.png'
 
 export function QueueTable() {
     const { queue, deleteFromQueue } = useQueue()
-
-    const imageClick = () => {
-        console.log('Click!!!!');
-      }  
-
+    
     return (
         <Container>
             <table>

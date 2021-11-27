@@ -16,13 +16,13 @@ const Navbar = () => {
         </NavLink>
         <Bars />
         <NavMenu>
-        <NavLink to='/' activeStyle>
+        <NavLink to='/' activestyle>
             Fila
           </NavLink>
-          <NavLink to='/TabelaSec' activeStyle>
+          <NavLink to='/TabelaSec' activestyle>
             Secretária
           </NavLink>
-          <NavLink to='/TabelaVet' activeStyle>
+          <NavLink to='/TabelaVet' activestyle>
             Veterinários
           </NavLink>
           </NavMenu>

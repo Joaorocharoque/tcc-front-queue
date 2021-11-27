@@ -1,21 +1,30 @@
 import { Container } from "./styles";
 import {useQueue} from "../../hooks/useQueue";
+import { useUsers } from "../../hooks/useUsers";
 
 export function Summary() {
     const { queue } = useQueue()
+    const { users } = useUsers()
     
-    const summary = queue.reduce((acc, queueItem) => {
+    const queueSummary = queue.reduce((acc, queueItem) => {
         acc.averageTime += 20;
 
         return acc;
     }, {
         totalInQueue: 0,
-        totalVets: 0,
         averageTime: 0,
     })
 
-    summary.totalInQueue = queue.length;
-    summary.totalVets = 10;
+    const usersSummary = users.reduce((acc, userItem) => {
+        if(userItem.category == "VETERINARY" ){
+            acc.totalVets = acc.totalVets + 1
+        }
+        return acc;
+    }, {
+        totalVets: 0
+    })
+
+    queueSummary.totalInQueue = queue.length;
     
     return (
         <Container>
@@ -24,7 +33,7 @@ export function Summary() {
                     <p>Total de Pessoas na Fila</p>
                 </header>
                 <strong>
-                    {summary.totalInQueue}
+                    {queueSummary.totalInQueue}
                 </strong>
             </div>
             <div>
@@ -32,7 +41,7 @@ export function Summary() {
                     <p>Total de Veterinários</p>
                 </header>
                 <strong>
-                    {summary.totalVets}
+                    {usersSummary.totalVets}
                 </strong>
             </div>
             <div className="highlight-background">
@@ -40,7 +49,7 @@ export function Summary() {
                     <p>Tempo Médio de Atendimento</p>
                 </header>
                 <strong>
-                    {summary.averageTime}
+                    {queueSummary.averageTime}
                 </strong>
             </div>
         </Container>
