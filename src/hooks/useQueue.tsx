@@ -19,15 +19,14 @@ interface QueuePetItem {
     breed: string
 }
 
-type QueueItemInput = Omit<QueueItem, 'id'>
-
 interface QueueItemProviderProps {
     children: ReactNode
 }
 
 interface QueueContextData {
     queue: QueueItem[],
-    createQueue: (customerId: number) => Promise<void>;
+    addToQueue: (customerId: number) => Promise<void>;
+    deleteFromQueue: (customerId: number) => Promise<void>;
 }
 
 export const QueueContext = createContext<QueueContextData>(
@@ -45,7 +44,7 @@ export function QueueProvider({ children } : QueueItemProviderProps){
             })
     }, [])
 
-    async function createQueue(customerId: number){
+    async function addToQueue(customerId: number){
         const response = await api.post('/appointmentQueue/', { 
             customerId
         })
@@ -57,8 +56,18 @@ export function QueueProvider({ children } : QueueItemProviderProps){
         })
     }
 
+    async function deleteFromQueue(queueId: number){
+        await api.delete('/appointmentQueue/' + queueId)
+
+        api.get('/appointmentQueue')
+            .then(response => {
+                console.log(response.data)
+                setQueue(response.data)
+        })
+    }
+
     return (
-        <QueueContext.Provider value={{queue, createQueue}}>
+        <QueueContext.Provider value={{queue, addToQueue, deleteFromQueue}}>
             {children}
         </QueueContext.Provider>
     )

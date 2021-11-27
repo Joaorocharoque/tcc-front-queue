@@ -26,5 +26,10 @@ export const Container = styled.div`
         &:first-child {
             color: var(--text-title);
         }
+
+        img{
+            width: 22px;
+            cursor: pointer;
+        }
     }
 `

@@ -13,14 +13,14 @@ interface NewQueueItemModalProps{
 }
 
 export function NewQueueItemModal({isOpen, onRequestClose} : NewQueueItemModalProps) {
-    const { createQueue } = useQueue();
+    const { addToQueue } = useQueue();
 
     const [customerId, setCustomerId] = useState(0);
 
     async function handleCreateNewQueueItem(event: FormEvent) {
         event.preventDefault();
 
-        await createQueue(customerId)
+        await addToQueue(customerId)
 
         setCustomerId(0);
 
