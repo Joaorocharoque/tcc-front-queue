@@ -15,7 +15,7 @@ export function UserQueueSummary() {
                     <>
                     <div>
                         <header>
-                            <p>Sua Posição na Fila</p>
+                            <p>Olá {queueItem.customer.firstName}, sua posição é </p>
                         </header>
                         <strong>
                             {queueItem.position}
