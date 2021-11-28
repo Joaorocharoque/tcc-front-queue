@@ -36,13 +36,20 @@ export const QueueContext = createContext<QueueContextData>(
 export function QueueProvider({ children } : QueueItemProviderProps){
     const[queue, setQueue] = useState<QueueItem[]>([]);
 
-    useEffect(() => {        
+    // (async () => {
+    //     const result = await api.get('/appointmentQueue')
+    //     setQueue(result.data)
+    // })()
+    
+    useEffect(() => {
         api.get('/appointmentQueue')
             .then(response => {
+                console.log("Getting queue info")
                 console.log(response.data)
                 setQueue(response.data)
             })
     }, [])
+
 
     async function addToQueue(customerId: number){
         const response = await api.post('/appointmentQueue/', { 

@@ -29,10 +29,10 @@ export function NewQueueItemModal({isOpen, onRequestClose} : NewQueueItemModalPr
 
     return (
         <Modal 
-        isOpen={isOpen} 
-        onRequestClose={onRequestClose}
-        overlayClassName="react-modal-overlay"
-        className="react-modal-content"
+            isOpen={isOpen} 
+            onRequestClose={onRequestClose}
+            overlayClassName="react-modal-overlay"
+            className="react-modal-content"
         >
             <button type="button" onClick={onRequestClose} className="react-modal-close">
                 <img src={closeImg} alt="Fecha"/>

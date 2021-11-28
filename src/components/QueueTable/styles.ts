@@ -29,6 +29,7 @@ export const Container = styled.div`
 
         img{
             width: 22px;
+            margin-right: 1rem;
             cursor: pointer;
         }
     }

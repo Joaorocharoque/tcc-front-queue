@@ -3,8 +3,6 @@ import { Header } from "../components/Header";
 import { GlobalStyle } from "../styles/global";
 import { useState } from "react";
 import { NewQueueItemModal } from "../components/NewQueueItemModal";
-import { QueueProvider } from "../hooks/useQueue";
-
 
 export function Home() {
   const [isNewQueueItemModalOpen, setIsNewQueueItemModalOpen] = useState(false);
@@ -19,16 +17,14 @@ export function Home() {
 
   return (
     <>
-    <QueueProvider>
-        <Header onHandleOpenNewQueueItemModal={handleOpenNewQueueItemModal} />
-        <Dashboard />
+      <Header onHandleOpenNewQueueItemModal={handleOpenNewQueueItemModal} />
+      <Dashboard />
 
-        <NewQueueItemModal
-          isOpen={isNewQueueItemModalOpen}
-          onRequestClose={handleCloseNewQueueItemModal} />
+      <NewQueueItemModal
+        isOpen={isNewQueueItemModalOpen}
+        onRequestClose={handleCloseNewQueueItemModal} />
 
-        <GlobalStyle />
-      </QueueProvider>
+      <GlobalStyle />
       </>
   );
 }
