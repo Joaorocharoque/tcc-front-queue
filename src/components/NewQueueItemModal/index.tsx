@@ -15,14 +15,14 @@ interface NewQueueItemModalProps{
 export function NewQueueItemModal({isOpen, onRequestClose} : NewQueueItemModalProps) {
     const { addToQueue } = useQueue();
 
-    const [customerId, setCustomerId] = useState(0);
+    const [customerId, setCustomerId] = useState('');
 
     async function handleCreateNewQueueItem(event: FormEvent) {
         event.preventDefault();
 
-        await addToQueue(customerId)
+        await addToQueue(Number(customerId))
 
-        setCustomerId(0);
+        setCustomerId('');
 
         onRequestClose();
     }
@@ -44,7 +44,7 @@ export function NewQueueItemModal({isOpen, onRequestClose} : NewQueueItemModalPr
                 <input 
                     placeholder="Customer ID"
                     value={customerId}
-                    onChange={event => setCustomerId(Number(event.target.value))}
+                    onChange={event => setCustomerId(event.target.value)}
                 />
 
                 <button type="submit">
