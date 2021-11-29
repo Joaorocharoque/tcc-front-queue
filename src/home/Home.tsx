@@ -17,7 +17,7 @@ export function Home() {
 
   return (
     <>
-      <Header onHandleOpenNewQueueItemModal={handleOpenNewQueueItemModal} />
+      <Header onHandleOpenNewQueueItemModal={handleOpenNewQueueItemModal} showAddToQueueButton={true} />
       <Dashboard />
 
       <NewQueueItemModal

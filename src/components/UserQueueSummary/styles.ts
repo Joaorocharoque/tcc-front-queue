@@ -21,7 +21,7 @@ export const Container = styled.div`
         strong{
             display: block;
             margin-top: 1rem;
-            font-size: 1.5rem;
+            font-size: 1rem;
             font-weight: 500;
             line-height: 1rem;
         }

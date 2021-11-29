@@ -16,7 +16,7 @@ export function UserQueueHome() {
 
   return (
     <>
-      <Header onHandleOpenNewQueueItemModal={handleOpenNewQueueItemModal} />
+      <Header onHandleOpenNewQueueItemModal={handleOpenNewQueueItemModal} showAddToQueueButton={false}/>
       <UserQueueDashboard />
 
       <GlobalStyle />
