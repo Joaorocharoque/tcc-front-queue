@@ -15,14 +15,14 @@ interface NewQueueItemModalProps{
 export function NewQueueItemModal({isOpen, onRequestClose} : NewQueueItemModalProps) {
     const { addToQueue } = useQueue();
 
-    const [customerId, setCustomerId] = useState('');
+    const [cpf, setCpf] = useState('');
 
     async function handleCreateNewQueueItem(event: FormEvent) {
         event.preventDefault();
 
-        await addToQueue(Number(customerId))
+        await addToQueue(cpf)
 
-        setCustomerId('');
+        setCpf('');
 
         onRequestClose();
     }
@@ -42,9 +42,9 @@ export function NewQueueItemModal({isOpen, onRequestClose} : NewQueueItemModalPr
                 <h2>Adicionar na Fila</h2>
 
                 <input 
-                    placeholder="Customer ID"
-                    value={customerId}
-                    onChange={event => setCustomerId(event.target.value)}
+                    placeholder="CPF"
+                    value={cpf}
+                    onChange={event => setCpf(event.target.value)}
                 />
 
                 <button type="submit">

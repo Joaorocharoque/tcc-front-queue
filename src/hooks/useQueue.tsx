@@ -25,7 +25,7 @@ interface QueueItemProviderProps {
 
 interface QueueContextData {
     queue: QueueItem[],
-    addToQueue: (customerId: number) => Promise<void>;
+    addToQueue: (cpf: string) => Promise<void>;
     deleteFromQueue: (customerId: number) => Promise<void>;
 }
 
@@ -51,9 +51,9 @@ export function QueueProvider({ children } : QueueItemProviderProps){
     }, [])
 
 
-    async function addToQueue(customerId: number){
+    async function addToQueue(cpf: string){
         const response = await api.post('/appointmentQueue/', { 
-            customerId
+            cpf
         })
 
         api.get('/appointmentQueue')
