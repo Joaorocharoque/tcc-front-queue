@@ -15,7 +15,7 @@ export function UserQueueSummary() {
                     <>
                     <div>
                         <header>
-                            <p>Olá {queueItem.customer.firstName}, sua posição é </p>
+                            <p>{queueItem.customer.firstName}, sua posição é</p>
                         </header>
                         <strong>
                             {queueItem.position}
@@ -31,10 +31,10 @@ export function UserQueueSummary() {
                     </div>
                     <div className="highlight-background">
                         <header>
-                            <p>Tempo de Espera Aproximado</p>
+                            <p>Espera Aproximado</p>
                         </header>
                         <strong>
-                            10
+                            10 min
                         </strong>
                     </div>
                     </>

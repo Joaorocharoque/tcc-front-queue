@@ -21,9 +21,9 @@ export const Container = styled.div`
         strong{
             display: block;
             margin-top: 1rem;
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 500;
-            line-height: 3rem;
+            line-height: 1rem;
         }
 
         &.highlight-background {
