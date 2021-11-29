@@ -65,7 +65,7 @@ export function NewQueueItemModal({isOpen, onRequestClose} : NewQueueItemModalPr
                 </table>
 
                 <button type="submit">
-                    Cadastrar
+                    Buscar
                 </button>
             </Container>
         </Modal>
