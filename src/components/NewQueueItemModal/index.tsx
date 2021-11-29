@@ -4,6 +4,7 @@ import { Container } from './styles';
 import { useQueue } from '../../hooks/useQueue';
 
 import closeImg from '../../assets/close.svg'
+import addImg from '../../assets/add.png'
 
 Modal.setAppElement('#root')
 
@@ -13,9 +14,14 @@ interface NewQueueItemModalProps{
 }
 
 export function NewQueueItemModal({isOpen, onRequestClose} : NewQueueItemModalProps) {
-    const { addToQueue } = useQueue();
+    const { addToQueue, findCustomerByCpf, customerPets, clearCustomerPets } = useQueue();
 
     const [cpf, setCpf] = useState('');
+
+    async function handleFindPets(event: FormEvent) {
+        event.preventDefault();
+        findCustomerByCpf(cpf)
+    }
 
     async function handleCreateNewQueueItem(event: FormEvent) {
         event.preventDefault();
@@ -23,7 +29,7 @@ export function NewQueueItemModal({isOpen, onRequestClose} : NewQueueItemModalPr
         await addToQueue(cpf)
 
         setCpf('');
-
+        clearCustomerPets()
         onRequestClose();
     }
 
@@ -38,7 +44,7 @@ export function NewQueueItemModal({isOpen, onRequestClose} : NewQueueItemModalPr
                 <img src={closeImg} alt="Fecha"/>
             </button>
 
-            <Container onSubmit={handleCreateNewQueueItem}>
+            <Container onSubmit={handleFindPets}>
                 <h2>Adicionar na Fila</h2>
 
                 <input 
@@ -46,6 +52,17 @@ export function NewQueueItemModal({isOpen, onRequestClose} : NewQueueItemModalPr
                     value={cpf}
                     onChange={event => setCpf(event.target.value)}
                 />
+                <table>
+                    <tbody>
+                        {customerPets.map(pet => (
+                            <tr key={pet.id}>
+                                <td><img src={addImg} onClick={handleCreateNewQueueItem}/></td>
+                                <td>{pet.name}</td>
+                                <td>{pet.breed}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
 
                 <button type="submit">
                     Cadastrar

@@ -25,8 +25,11 @@ interface QueueItemProviderProps {
 
 interface QueueContextData {
     queue: QueueItem[],
+    customerPets: QueuePetItem[],
+    clearCustomerPets: () => Promise<void>;
     addToQueue: (cpf: string) => Promise<void>;
     deleteFromQueue: (customerId: number) => Promise<void>;
+    findCustomerByCpf: (cpf: string) => Promise<void>;
 }
 
 export const QueueContext = createContext<QueueContextData>(
@@ -35,11 +38,7 @@ export const QueueContext = createContext<QueueContextData>(
 
 export function QueueProvider({ children } : QueueItemProviderProps){
     const[queue, setQueue] = useState<QueueItem[]>([]);
-
-    // (async () => {
-    //     const result = await api.get('/appointmentQueue')
-    //     setQueue(result.data)
-    // })()
+    const[customerPets, setCustomerPets] = useState<QueuePetItem[]>([]);
     
     useEffect(() => {
         api.get('/appointmentQueue')
@@ -58,7 +57,6 @@ export function QueueProvider({ children } : QueueItemProviderProps){
 
         api.get('/appointmentQueue')
             .then(response => {
-                console.log(response.data)
                 setQueue(response.data)
         })
     }
@@ -68,13 +66,25 @@ export function QueueProvider({ children } : QueueItemProviderProps){
 
         api.get('/appointmentQueue')
             .then(response => {
-                console.log(response.data)
                 setQueue(response.data)
         })
     }
 
+    async function findCustomerByCpf(cpf: string){
+        api.get('/user/customer/' + cpf)
+        .then(response => {
+            console.log("Getting customer info")
+            setCustomerPets(response.data.pets)
+        })
+    }
+
+    async function clearCustomerPets(){
+        setCustomerPets([])
+    }
+
+
     return (
-        <QueueContext.Provider value={{queue, addToQueue, deleteFromQueue}}>
+        <QueueContext.Provider value={{queue, customerPets, addToQueue, deleteFromQueue, findCustomerByCpf, clearCustomerPets}}>
             {children}
         </QueueContext.Provider>
     )
