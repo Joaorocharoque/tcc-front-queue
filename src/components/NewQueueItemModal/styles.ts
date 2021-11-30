@@ -52,6 +52,7 @@ export const Container = styled.form`
     table{
         width: 100%;
         border-spacing: 0 0.5rem;
+        margin-top: 1rem;
 
         th{
             color: var(--text-body);
@@ -76,6 +77,7 @@ export const Container = styled.form`
         img{
             width: 22px;
             margin-right: 1rem;
+            margin-top: 0.5rem;
             cursor: pointer;
         }
     }

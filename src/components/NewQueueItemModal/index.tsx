@@ -52,6 +52,11 @@ export function NewQueueItemModal({isOpen, onRequestClose} : NewQueueItemModalPr
                     value={cpf}
                     onChange={event => setCpf(event.target.value)}
                 />
+
+                <button type="submit">
+                    Buscar
+                </button>
+
                 <table>
                     <tbody>
                         {customerPets.map(pet => (
@@ -63,10 +68,6 @@ export function NewQueueItemModal({isOpen, onRequestClose} : NewQueueItemModalPr
                         ))}
                     </tbody>
                 </table>
-
-                <button type="submit">
-                    Buscar
-                </button>
             </Container>
         </Modal>
     )
