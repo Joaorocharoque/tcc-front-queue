@@ -19,6 +19,9 @@ const Navbar = () => {
         <NavLink to='/' activestyle>
             Fila
           </NavLink>
+          <NavLink to='/TabelaCustomer' activestyle>
+            Cliente
+          </NavLink>
           <NavLink to='/TabelaSec' activestyle>
             Secretária
           </NavLink>
@@ -27,7 +30,6 @@ const Navbar = () => {
           </NavLink>
           </NavMenu>
           <NavBtn>
-            <NavBtnLink to='/'>Login</NavBtnLink>
         </NavBtn>
       </Nav>
     </>
