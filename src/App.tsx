@@ -5,6 +5,7 @@ import { TabelaSec } from "./home/TabelaSec";
 import { TabelaVet } from "./home/TabelaVet";
 import { UserQueueHome } from "./home/UserQueueHome";
 import { QueueProvider } from "./hooks/useQueue";
+import { TabelaCustomer } from "./home/TabelaCustomer";
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
       <Router>
           <Navbar />
             <Routes>
+            <Route path="/TabelaCustomer" element={<TabelaCustomer />} />
             <Route path="/TabelaVet" element={<TabelaVet />} />
             <Route path="/TabelaSec" element={<TabelaSec />} />
             <Route path="/" element={<Home />} />
