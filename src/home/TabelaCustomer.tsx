@@ -5,7 +5,6 @@ import { DashboardCustomer } from "../components/DashboardCustomer";
 import { NewCustomerItemModal } from "../components/NewCustomerItemModel";
 import {UserProvider} from "../hooks/useUsers";
 
-
 export function TabelaCustomer() {
   const [isNewCustomerItemModalOpen, setIsNewCustomerItemModalOpen] = useState(false);
 
