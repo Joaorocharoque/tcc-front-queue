@@ -1,9 +1,9 @@
 import { GlobalStyle } from "../styles/global";
 import { useState } from "react";
 import { NewVetItemModal } from "../components/NewVetItemModal";
-import { VetProvider } from "../hooks/useVet";
 import { Header } from "../components/HeaderVet";
 import { DashboardVet } from "../components/DashboardVet";
+import {UserProvider} from "../hooks/useUsers";
 
 
 export function TabelaVet() {
@@ -19,7 +19,7 @@ export function TabelaVet() {
 
   return (
     <>
-    <VetProvider>
+    <UserProvider>
         <Header onHandleOpenNewVetItemModal={handleOpenNewVetItemModal} />
      
         <NewVetItemModal
@@ -29,7 +29,7 @@ export function TabelaVet() {
          <DashboardVet />
 
         <GlobalStyle />
-      </VetProvider>
+      </UserProvider>
       </>
   );
 }

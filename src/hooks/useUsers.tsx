@@ -38,6 +38,7 @@ export function UserProvider({ children } : UserItemProviderProps){
     useEffect(() => {        
         api.get('/user')
             .then(response => {
+                console.log("Buscando usuarios")
                 console.log(response.data)
                 setUsers(response.data)
             })

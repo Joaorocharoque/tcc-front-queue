@@ -43,8 +43,6 @@ export function QueueProvider({ children } : QueueItemProviderProps){
     useEffect(() => {
         api.get('/appointmentQueue')
             .then(response => {
-                console.log("Getting queue info")
-                console.log(response.data)
                 setQueue(response.data)
             })
     }, [])

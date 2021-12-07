@@ -1,29 +1,30 @@
 import { Container } from "./styles";
-import { useTableSec } from "../../hooks/useTableSec";
+import {useUsers} from "../../hooks/useUsers";
 
 export function SecTable() {
-    const { sec } = useTableSec()
+    const { users } = useUsers()
 
     return (
         <Container>
             <table>
                 <thead>
                     <tr>
-                        <th>Secretária</th>
+                        <th>Nome</th>
+                        <th>Sobrenome</th>
                         <th>CPF</th>
                         <th>Email</th>
-                        <th>Senha</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     {
-                        sec.map(secItem => (
+                        users.filter(user => user.category == 'EMPLOYEE')
+                            .map(secItem => (
                             <tr key={secItem.id}>
-                                <td>{secItem.sec}</td>
+                                <td>{secItem.firstName}</td>
+                                <td>{secItem.lastName}</td>
                                 <td>{secItem.cpf}</td>
                                 <td>{secItem.email}</td>
-                                <td>{secItem.password}</td>
                             </tr>
                         ))
                     }

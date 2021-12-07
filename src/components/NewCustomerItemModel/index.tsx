@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import { Container } from './styles';
 
 import closeImg from '../../assets/close.svg'
-import { useCustomer } from '../../hooks/useCustomer';
+import {useUsers} from "../../hooks/useUsers";
 
 Modal.setAppElement('#root')
 
@@ -13,7 +13,7 @@ interface NewCustomerItemModalProps{
 }
 
 export function NewCustomerItemModal({isOpen, onRequestClose} : NewCustomerItemModalProps) {
-    const { createCustomer } = useCustomer();
+    const { addToUser } = useUsers();
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -34,28 +34,28 @@ export function NewCustomerItemModal({isOpen, onRequestClose} : NewCustomerItemM
     async function handleCreateNewCustomerItem(event: FormEvent) {
         event.preventDefault();
 
-        await createCustomer({
-            firstName,
-            lastName, 
-            email,
-            password,
-            cpf,
-            address:{
-            street,
-            number,
-            city,
-            state,
-            zipcode,
-            description,
-            },
-        
-            pets:[
-                {
-                name,
-                breed,
-                }
-            ],
-        }) 
+        // await addToUser({
+        //     firstName,
+        //     lastName,
+        //     email,
+        //     password,
+        //     cpf,
+        //     address:{
+        //     street,
+        //     number,
+        //     city,
+        //     state,
+        //     zipcode,
+        //     description,
+        //     },
+        //
+        //     pets:[
+        //         {
+        //         name,
+        //         breed,
+        //         }
+        //     ],
+        // })
 
         setFirstName('');
         setLastName('');

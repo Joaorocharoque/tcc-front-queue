@@ -1,9 +1,9 @@
 import { FormEvent, useState } from 'react';
 import Modal from 'react-modal';
 import { Container } from './styles';
-import { useVet } from '../../hooks/useVet';
 
 import closeImg from '../../assets/close.svg'
+import {useUsers} from "../../hooks/useUsers";
 
 Modal.setAppElement('#root')
 
@@ -13,7 +13,7 @@ interface NewVetItemModalProps{
 }
 
 export function NewVetItemModal({isOpen, onRequestClose} : NewVetItemModalProps) {
-    const { createVet } = useVet();
+    const { addToUser } = useUsers();
 
     const [vet, setVet] = useState('');
     const [crmv, setCrmv] = useState(0);
@@ -23,12 +23,12 @@ export function NewVetItemModal({isOpen, onRequestClose} : NewVetItemModalProps)
     async function handleCreateNewVetItem(event: FormEvent) {
         event.preventDefault();
 
-        await createVet({
-            vet,
-            crmv,
-            email,
-            password,
-        })
+        // await createVet({
+        //     vet,
+        //     crmv,
+        //     email,
+        //     password,
+        // })
 
         setVet('');
         setCrmv(0);

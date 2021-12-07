@@ -11,9 +11,8 @@ export function Header({onHandleOpenNewCustomerItemModal} : HeaderCustomerProps)
             <Content>
                 <img src={logoImg} alt="QueueVet"/>
                 <button type="button" onClick={onHandleOpenNewCustomerItemModal}>
-                    Adicionar Novo Cliente
+                    Adicionar Novo
                 </button>
-
             </Content>
         </Container>
     )

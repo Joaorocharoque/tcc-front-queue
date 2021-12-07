@@ -2,8 +2,8 @@ import { Header } from "../components/HeaderCustomer";
 import { GlobalStyle } from "../styles/global";
 import { useState } from "react";
 import { DashboardCustomer } from "../components/DashboardCustomer";
-import { CustomerProvider } from "../hooks/useCustomer";
 import { NewCustomerItemModal } from "../components/NewCustomerItemModel";
+import {UserProvider} from "../hooks/useUsers";
 
 
 export function TabelaCustomer() {
@@ -19,16 +19,16 @@ export function TabelaCustomer() {
 
   return (
     <>
-    <CustomerProvider>
-        <Header onHandleOpenNewCustomerItemModal={handleOpenNewCustomerItemModal} />
+        <UserProvider>
+            <Header onHandleOpenNewCustomerItemModal={handleOpenNewCustomerItemModal} />
 
-        <NewCustomerItemModal
-          isOpen={isNewCustomerItemModalOpen}
-          onRequestClose={handleCloseNewCustomerItemModal} />
-        <DashboardCustomer />
+            <NewCustomerItemModal
+              isOpen={isNewCustomerItemModalOpen}
+              onRequestClose={handleCloseNewCustomerItemModal} />
+            <DashboardCustomer />
 
-        <GlobalStyle />
-      </CustomerProvider>
+            <GlobalStyle />
+          </UserProvider>
       </>
   );
 }

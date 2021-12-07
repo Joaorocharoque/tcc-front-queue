@@ -1,9 +1,9 @@
 import { FormEvent, useState } from 'react';
 import Modal from 'react-modal';
 import { Container } from './styles';
-import { useTableSec } from '../../hooks/useTableSec';
 
 import closeImg from '../../assets/close.svg'
+import {useUsers} from "../../hooks/useUsers";
 
 Modal.setAppElement('#root')
 
@@ -13,7 +13,7 @@ interface NewSecItemModalProps{
 }
 
 export function NewSecItemModal({isOpen, onRequestClose} : NewSecItemModalProps) {
-    const { createSec } = useTableSec();
+    const { addToUser } = useUsers();
 
     const [sec, setSec] = useState('');
     const [cpf, setCpf] = useState(0);
@@ -24,12 +24,12 @@ export function NewSecItemModal({isOpen, onRequestClose} : NewSecItemModalProps)
     async function handleCreateNewSecItem(event: FormEvent) {
         event.preventDefault();
 
-        await createSec({
-            sec,
-            cpf,
-            email,
-            password,
-        })
+        // await createSec({
+        //     sec,
+        //     cpf,
+        //     email,
+        //     password,
+        // })
 
         setSec('');
         setCpf(0);

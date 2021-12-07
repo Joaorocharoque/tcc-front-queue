@@ -11,7 +11,7 @@ export function Header({onHandleOpenNewSecItemModal} : HeaderSecProps){
             <Content>
                 <img src={logoImg} alt="QueueVet"/>
                 <button type="button" onClick={onHandleOpenNewSecItemModal}>
-                    Adicionar Nova Secretária
+                    Adicionar Novo
                 </button>
 
             </Content>

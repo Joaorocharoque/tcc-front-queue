@@ -11,7 +11,7 @@ export function Header({onHandleOpenNewVetItemModal} : HeaderVetProps){
             <Content>
                 <img src={logoImg} alt="QueueVet"/>
                 <button type="button" onClick={onHandleOpenNewVetItemModal}>
-                    Adicionar Novo Veterinário
+                    Adicionar Novo
                 </button>
 
             </Content>

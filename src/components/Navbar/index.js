@@ -20,10 +20,10 @@ const Navbar = () => {
             Fila
           </NavLink>
           <NavLink to='/TabelaCustomer' activestyle>
-            Cliente
+            Clientes
           </NavLink>
           <NavLink to='/TabelaSec' activestyle>
-            Secretária
+            Funcionários
           </NavLink>
           <NavLink to='/TabelaVet' activestyle>
             Veterinários

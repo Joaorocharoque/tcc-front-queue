@@ -1,9 +1,9 @@
 import { Header } from "../components/HeaderSec";
 import { GlobalStyle } from "../styles/global";
 import { useState } from "react";
-import { SecProvider } from "../hooks/useTableSec";
 import { NewSecItemModal } from "../components/NewSecItemModal";
 import { DashboardSec } from "../components/DashboardSec";
+import {UserProvider} from "../hooks/useUsers";
 
 
 export function TabelaSec() {
@@ -19,7 +19,7 @@ export function TabelaSec() {
 
   return (
     <>
-    <SecProvider>
+    <UserProvider>
         <Header onHandleOpenNewSecItemModal={handleOpenNewSecItemModal} />
 
         <NewSecItemModal
@@ -28,7 +28,7 @@ export function TabelaSec() {
         <DashboardSec />
 
         <GlobalStyle />
-      </SecProvider>
+      </UserProvider>
       </>
   );
 }
