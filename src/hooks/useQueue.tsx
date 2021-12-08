@@ -9,6 +9,7 @@ interface QueueItem {
         lastName: string,
         email: string,
         category: string,
+        cpf: string
         pets: QueuePetItem[]
     }
 }
@@ -49,8 +50,9 @@ export function QueueProvider({ children } : QueueItemProviderProps){
 
 
     async function addToQueue(cpf: string){
-        const response = await api.post('/appointmentQueue/', { 
+        await api.post('/appointmentQueue/', {
             cpf
+        }).catch(function (error) {
         })
 
         api.get('/appointmentQueue')
@@ -71,8 +73,9 @@ export function QueueProvider({ children } : QueueItemProviderProps){
     async function findCustomerByCpf(cpf: string){
         api.get('/user/customer/' + cpf)
         .then(response => {
-            console.log("Getting customer info")
             setCustomerPets(response.data.pets)
+        }, () => {
+            clearCustomerPets()
         })
     }
 

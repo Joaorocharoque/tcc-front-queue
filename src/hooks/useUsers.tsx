@@ -38,14 +38,12 @@ export function UserProvider({ children } : UserItemProviderProps){
     useEffect(() => {        
         api.get('/user')
             .then(response => {
-                console.log("Buscando usuarios")
-                console.log(response.data)
                 setUsers(response.data)
             })
     }, [])
 
     async function addToUser(userId: number){
-        const response = await api.post('/user/', { 
+        await api.post('/user/', {
             userId
         })
 

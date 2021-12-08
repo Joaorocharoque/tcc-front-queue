@@ -33,7 +33,9 @@ export function QueueTable() {
                     <tr>
                         <th>Posição</th>
                         <th>Nome</th>
+                        <th>Sobrenome</th>
                         <th>Pet</th>
+                        <th>CPF</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -44,7 +46,9 @@ export function QueueTable() {
                             <tr key={queueItem.id}>
                                 <td>{queueItem.position}</td>
                                 <td>{queueItem.customer.firstName}</td>
+                                <td>{queueItem.customer.lastName}</td>
                                 <td>{queueItem.customer.pets[0].name}</td>
+                                <td>{queueItem.customer.cpf}</td>
                                 <td>
                                     <img src={qrCodeImg} onClick={() => handleOpenQrcodeModal(queueItem.id)}></img>
                                     <img src={deleteImg} onClick={() => deleteFromQueue(queueItem.id)}></img>

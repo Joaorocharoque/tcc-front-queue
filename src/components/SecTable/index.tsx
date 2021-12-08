@@ -11,20 +11,20 @@ export function SecTable() {
                     <tr>
                         <th>Nome</th>
                         <th>Sobrenome</th>
-                        <th>CPF</th>
                         <th>Email</th>
+                        <th>CPF</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     {
                         users.filter(user => user.category == 'EMPLOYEE')
-                            .map(secItem => (
-                            <tr key={secItem.id}>
-                                <td>{secItem.firstName}</td>
-                                <td>{secItem.lastName}</td>
-                                <td>{secItem.cpf}</td>
-                                <td>{secItem.email}</td>
+                            .map(user => (
+                            <tr key={user.id}>
+                                <td>{user.firstName}</td>
+                                <td>{user.lastName}</td>
+                                <td>{user.email}</td>
+                                <td>{user.cpf}</td>
                             </tr>
                         ))
                     }

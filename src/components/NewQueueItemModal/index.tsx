@@ -20,14 +20,17 @@ export function NewQueueItemModal({isOpen, onRequestClose} : NewQueueItemModalPr
 
     async function handleFindPets(event: FormEvent) {
         event.preventDefault();
-        findCustomerByCpf(cpf)
+        await findCustomerByCpf(cpf)
+        if(customerPets == null){
+            await clearCustomerPets()
+        }
     }
 
     async function handleCreateNewQueueItem(event: FormEvent) {
         event.preventDefault();
 
         await addToQueue(cpf)
-
+        
         setCpf('');
         clearCustomerPets()
         onRequestClose();
