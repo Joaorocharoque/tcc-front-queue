@@ -28,12 +28,13 @@ export function NewQueueItemModal({isOpen, onRequestClose} : NewQueueItemModalPr
 
     async function handleCreateNewQueueItem(event: FormEvent) {
         event.preventDefault();
-
-        await addToQueue(cpf)
-        
-        setCpf('');
-        clearCustomerPets()
-        onRequestClose();
+        const petId = event.currentTarget.getAttribute("pet-id")
+        if(petId != null){
+            await addToQueue(cpf, petId)
+            setCpf('');
+            await clearCustomerPets()
+            onRequestClose();
+        }
     }
 
     return (
@@ -64,7 +65,7 @@ export function NewQueueItemModal({isOpen, onRequestClose} : NewQueueItemModalPr
                     <tbody>
                         {customerPets.map(pet => (
                             <tr key={pet.id}>
-                                <td><img src={addImg} onClick={handleCreateNewQueueItem}/></td>
+                                <td><img src={addImg} pet-id={pet.id} onClick={handleCreateNewQueueItem}/></td>
                                 <td>{pet.name}</td>
                                 <td>{pet.breed}</td>
                             </tr>

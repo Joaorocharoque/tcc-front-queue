@@ -4,6 +4,7 @@ import { api } from "../services/api";
 interface QueueItem {
     id: number,
     position: number,
+    pet: QueuePetItem,
     customer: {
         firstName: string,
         lastName: string,
@@ -28,7 +29,7 @@ interface QueueContextData {
     queue: QueueItem[],
     customerPets: QueuePetItem[],
     clearCustomerPets: () => Promise<void>;
-    addToQueue: (cpf: string) => Promise<void>;
+    addToQueue: (cpf: string, petId: string) => Promise<void>;
     deleteFromQueue: (customerId: number) => Promise<void>;
     findCustomerByCpf: (cpf: string) => Promise<void>;
 }
@@ -49,9 +50,9 @@ export function QueueProvider({ children } : QueueItemProviderProps){
     }, [])
 
 
-    async function addToQueue(cpf: string){
+    async function addToQueue(cpf: string, petId: string){
         await api.post('/appointmentQueue/', {
-            cpf
+            cpf, petId
         }).catch(function (error) {
         })
 
