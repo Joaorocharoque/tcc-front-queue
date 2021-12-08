@@ -62,6 +62,13 @@ export function NewQueueItemModal({isOpen, onRequestClose} : NewQueueItemModalPr
                 </button>
 
                 <table>
+                    <th></th>
+                    <th>
+                        Nome
+                    </th>
+                    <th>
+                        Raça
+                    </th>
                     <tbody>
                         {customerPets.map(pet => (
                             <tr key={pet.id}>
