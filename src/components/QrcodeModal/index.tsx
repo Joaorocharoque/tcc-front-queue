@@ -8,6 +8,18 @@ interface QrcodeModalPropos{
     queueItemId: number;
     onRequestClose: () => void;
 }
+ const h1Style = {  
+    height: '100%',
+    width: '40%',
+    margin: 'auto ',
+    padding: '15px'
+  };
+  
+  const divModal={
+    height: '100%',
+    width: '30%',
+    margin: 'auto '
+  };
 
 export function QrcodeModal({isOpen, onRequestClose, queueItemId} : QrcodeModalPropos) {
     var QRCode = require('qrcode.react');
@@ -23,8 +35,11 @@ export function QrcodeModal({isOpen, onRequestClose, queueItemId} : QrcodeModalP
             <button type="button" onClick={onRequestClose} className="react-modal-close">
                 <img src={closeImg} alt="Fecha"/>
             </button>
-
+             
+             <h1 style={h1Style}>Scannear QR Code</h1>
+             <div style={divModal}>
             <QRCode value={url} />
+            </div>
         </Modal>
     )
 }

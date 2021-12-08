@@ -4,16 +4,17 @@ import {
   Bars,
   NavMenu,
   NavBtn,
+  h1Style,
   NavBtnLink
 } from './NavbarElements';
 
 const Navbar = () => {
+
   return (
     <>
       <Nav>
-      <NavLink to='/'>
-         <h1>QueueVet</h1>
-        </NavLink>
+      
+      <h1 style={h1Style}>QueueVet</h1>      
         <Bars />
         <NavMenu>
         <NavLink to='/' activestyle>
