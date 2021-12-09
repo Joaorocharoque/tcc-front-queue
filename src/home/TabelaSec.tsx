@@ -1,8 +1,8 @@
-import { Header } from "../components/HeaderSec";
+import { HeaderEmployee } from "../components/HeaderEmployee";
 import { GlobalStyle } from "../styles/global";
 import { useState } from "react";
-import { NewSecItemModal } from "../components/NewSecItemModal";
-import { DashboardSec } from "../components/DashboardSec";
+import { NewEmployeeItemModal } from "../components/NewEmployeeItemModal";
+import { DashboardEmployee } from "../components/DashboardEmployee";
 import {UserProvider} from "../hooks/useUsers";
 
 
@@ -20,12 +20,12 @@ export function TabelaSec() {
   return (
     <>
     <UserProvider>
-        <Header onHandleOpenNewSecItemModal={handleOpenNewSecItemModal} />
+        <HeaderEmployee onHandleOpenNewEmployeeItemModal={handleOpenNewSecItemModal} />
 
-        <NewSecItemModal
+        <NewEmployeeItemModal
           isOpen={isNewSecItemModalOpen}
           onRequestClose={handleCloseNewSecItemModal} />
-        <DashboardSec />
+        <DashboardEmployee />
 
         <GlobalStyle />
       </UserProvider>

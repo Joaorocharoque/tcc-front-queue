@@ -1,8 +1,8 @@
 import { GlobalStyle } from "../styles/global";
 import { useState } from "react";
 import { NewVetItemModal } from "../components/NewVetItemModal";
-import { Header } from "../components/HeaderVet";
-import { DashboardVet } from "../components/DashboardVet";
+import { HeaderVeterinary } from "../components/HeaderVeterinary";
+import { DashboardVeterinary } from "../components/DashboardVeterinary";
 import {UserProvider} from "../hooks/useUsers";
 
 
@@ -20,13 +20,13 @@ export function TabelaVet() {
   return (
     <>
     <UserProvider>
-        <Header onHandleOpenNewVetItemModal={handleOpenNewVetItemModal} />
+        <HeaderVeterinary onHandleOpenNewVetItemModal={handleOpenNewVetItemModal} />
      
         <NewVetItemModal
           isOpen={isNewVetItemModalOpen}
           onRequestClose={handleCloseNewVetItemModal} />
 
-         <DashboardVet />
+         <DashboardVeterinary />
 
         <GlobalStyle />
       </UserProvider>

@@ -1,7 +1,7 @@
-import { Header } from "../components/Header";
+import { HeaderQueue } from "../components/HeaderQueue";
 import { GlobalStyle } from "../styles/global";
 import { useState } from "react";
-import { UserQueueDashboard } from "../components/UserQueueDashboard";
+import { DashboardUserQueue } from "../components/DashboardUserQueue";
 
 export function UserQueueHome() {
   const [isNewQueueItemModalOpen, setIsNewQueueItemModalOpen] = useState(false);
@@ -16,8 +16,8 @@ export function UserQueueHome() {
 
   return (
     <>
-      <Header onHandleOpenNewQueueItemModal={handleOpenNewQueueItemModal} showAddToQueueButton={false}/>
-      <UserQueueDashboard />
+      <HeaderQueue onHandleOpenNewQueueItemModal={handleOpenNewQueueItemModal} showAddToQueueButton={false}/>
+      <DashboardUserQueue />
 
       <GlobalStyle />
     </>

@@ -1,5 +1,5 @@
-import { Dashboard } from "../components/Dashboard";
-import { Header } from "../components/Header";
+import { DashboardQueue } from "../components/DashboardQueue";
+import { HeaderQueue } from "../components/HeaderQueue";
 import { GlobalStyle } from "../styles/global";
 import { useState } from "react";
 import { NewQueueItemModal } from "../components/NewQueueItemModal";
@@ -17,8 +17,8 @@ export function Home() {
 
   return (
     <>
-      <Header onHandleOpenNewQueueItemModal={handleOpenNewQueueItemModal} showAddToQueueButton={true} />
-      <Dashboard />
+      <HeaderQueue onHandleOpenNewQueueItemModal={handleOpenNewQueueItemModal} showAddToQueueButton={true} />
+      <DashboardQueue />
 
       <NewQueueItemModal
         isOpen={isNewQueueItemModalOpen}

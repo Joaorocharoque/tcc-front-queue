@@ -1,13 +1,13 @@
-import { Container } from "../Dashboard/styles";
-import { CustomerTable } from "../CustomerTable";
-import {Summary} from "../Summary";
-import {CustomerSummary} from "../CustomerSummary";
+import { Container } from "../DashboardQueue/styles";
+import { TableCustomer } from "../TableCustomer";
+import {SummaryQueue} from "../SummaryQueue";
+import {SummaryCustomer} from "../SummaryCustomer";
 
 export function DashboardCustomer() {
     return (
         <Container>
-            <CustomerSummary />
-            <CustomerTable/>
+            <SummaryCustomer />
+            <TableCustomer/>
         </Container>
     );
 }
