@@ -6,14 +6,10 @@ export function SummaryQueue() {
     const { queue } = useQueue()
     const { users } = useUsers()
     
-    const queueSummary = queue.reduce((acc, queueItem) => {
-        acc.averageTime += 20;
-
-        return acc;
-    }, {
+    const queueSummary = {
         totalInQueue: 0,
-        averageTime: 0,
-    })
+        averageTime: 20,
+    }
 
     const usersSummary = users.reduce((acc, userItem) => {
         if(userItem.category == "VETERINARY" ){

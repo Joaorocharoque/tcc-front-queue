@@ -5,6 +5,7 @@ interface QueueItem {
     id: number,
     position: number,
     pet: QueuePetItem,
+    estimatedRemainingTime: number,
     customer: {
         firstName: string,
         lastName: string,

@@ -18,7 +18,7 @@ export function SummaryUserQueue() {
                             <p>Espera Aproximado</p>
                         </header>
                         <strong>
-                            10 min
+                            {queueItem.estimatedRemainingTime} min
                         </strong>
                     </div>
                     <div>
