@@ -1,5 +1,7 @@
 import { Container } from "./styles";
 import {useUsers} from "../../hooks/useUsers";
+import deleteImg from '../../assets/delete.png'
+
 
 export function TableEmployee() {
     const { users } = useUsers()
@@ -13,6 +15,7 @@ export function TableEmployee() {
                         <th>Sobrenome</th>
                         <th>Email</th>
                         <th>CPF</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
 
@@ -25,6 +28,7 @@ export function TableEmployee() {
                                 <td>{user.lastName}</td>
                                 <td>{user.email}</td>
                                 <td>{user.cpf}</td>
+                                <td><img src={deleteImg}></img></td>
                             </tr>
                         ))
                     }
