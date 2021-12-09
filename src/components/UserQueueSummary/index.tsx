@@ -13,6 +13,14 @@ export function UserQueueSummary() {
                 queue.filter(q => q.id === Number(queueItemId))
                 .map(queueItem => (
                     <>
+                    <div className="highlight-background">
+                        <header>
+                            <p>Espera Aproximado</p>
+                        </header>
+                        <strong>
+                            10 min
+                        </strong>
+                    </div>
                     <div>
                         <header>
                             <p>Sua posição é</p>
@@ -27,14 +35,6 @@ export function UserQueueSummary() {
                         </header>
                         <strong>
                             {queueItem.customer.pets[0].name}
-                        </strong>
-                    </div>
-                    <div className="highlight-background">
-                        <header>
-                            <p>Espera Aproximado</p>
-                        </header>
-                        <strong>
-                            10 min
                         </strong>
                     </div>
                     </>
