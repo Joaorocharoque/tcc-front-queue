@@ -45,7 +45,7 @@ export function SummaryQueue() {
                     <p>Tempo Médio de Atendimento</p>
                 </header>
                 <strong>
-                    {queueSummary.averageTime}
+                    {queueSummary.averageTime} min
                 </strong>
             </div>
         </Container>
