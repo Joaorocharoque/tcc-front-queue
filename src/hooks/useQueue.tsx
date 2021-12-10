@@ -44,10 +44,15 @@ export function QueueProvider({ children } : QueueItemProviderProps){
     const[customerPets, setCustomerPets] = useState<QueuePetItem[]>([]);
     
     useEffect(() => {
-        api.get('/appointmentQueue')
-            .then(response => {
-                setQueue(response.data)
-            })
+        const interval=setInterval(()=>{
+            api.get('/appointmentQueue')
+                .then(response => {
+                    setQueue(response.data)
+                })
+        },5000)
+
+        return()=>clearInterval(interval)
+
     }, [])
 
 
