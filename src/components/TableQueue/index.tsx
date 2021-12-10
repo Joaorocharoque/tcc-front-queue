@@ -35,7 +35,7 @@ export function TableQueue() {
                         <th>Nome</th>
                         <th>Sobrenome</th>
                         <th>Pet</th>
-                        <th>CPF</th>
+                        <th>Tempo Estimado</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -48,7 +48,7 @@ export function TableQueue() {
                                 <td>{queueItem.customer.firstName}</td>
                                 <td>{queueItem.customer.lastName}</td>
                                 <td>{queueItem.pet.name}</td>
-                                <td>{queueItem.customer.cpf}</td>
+                                <td>{queueItem.estimatedRemainingTime}</td>
                                 <td>
                                     <img src={qrCodeImg} onClick={() => handleOpenQrcodeModal(queueItem.id)}></img>
                                     <img src={deleteImg} onClick={() => deleteFromQueue(queueItem.id)}></img>
