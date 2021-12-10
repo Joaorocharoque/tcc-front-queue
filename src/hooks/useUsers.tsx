@@ -21,12 +21,17 @@ interface UserItemInput {
     email: string,
     category: string,
     profile: string,
-    pets: UserPetItem[]
+    pets: UserPetItemInput[]
 }
 
 interface UserPetItem {
     id: number,
-    name: number,
+    name: string,
+    breed: string
+}
+
+interface UserPetItemInput {
+    name: string,
     breed: string
 }
 
@@ -63,6 +68,7 @@ export function UserProvider({ children } : UserItemProviderProps){
             'email': user.email,
             'category': user.category,
             'profile': user.profile,
+            'pets': user.pets
         })
 
         api.get('/user')
