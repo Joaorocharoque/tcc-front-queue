@@ -4,7 +4,7 @@ import deleteImg from '../../assets/delete.png'
 
 
 export function TableVeterinary() {
-    const { users } = useUsers()
+    const { users, deleteFromUser } = useUsers()
 
     return (
         <Container>
@@ -22,13 +22,13 @@ export function TableVeterinary() {
                 <tbody>
                     {
                         users.filter(user => user.category == 'VETERINARY')
-                            .map(vetItem => (
-                            <tr key={vetItem.id}>
-                                <td>{vetItem.firstName}</td>
-                                <td>{vetItem.lastName}</td>
-                                <td>{vetItem.email}</td>
-                                <td>{vetItem.cpf}</td>
-                                <td><img src={deleteImg}></img></td>
+                            .map(user => (
+                            <tr key={user.id}>
+                                <td>{user.firstName}</td>
+                                <td>{user.lastName}</td>
+                                <td>{user.email}</td>
+                                <td>{user.cpf}</td>
+                                <td><img src={deleteImg} onClick={() => deleteFromUser(user.id)}></img></td>
                             </tr>
                         ))
                     }

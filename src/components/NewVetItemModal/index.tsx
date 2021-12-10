@@ -15,23 +15,29 @@ interface NewVetItemModalProps{
 export function NewVetItemModal({isOpen, onRequestClose} : NewVetItemModalProps) {
     const { addToUser } = useUsers();
 
-    const [vet, setVet] = useState('');
-    const [crmv, setCrmv] = useState(0);
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [cpf, setCpf] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    async function handleCreateNewVetItem(event: FormEvent) {
+    async function handleCreateNewVeterinaryItem(event: FormEvent) {
         event.preventDefault();
 
-        // await createVet({
-        //     vet,
-        //     crmv,
-        //     email,
-        //     password,
-        // })
+        await addToUser({
+            firstName,
+            lastName,
+            cpf,
+            email,
+            password,
+            category: 'VETERINARY',
+            profile: 'ADM',
+            pets: []
+        })
 
-        setVet('');
-        setCrmv(0);
+        setFirstName('');
+        setLastName('');
+        setCpf('');
         setEmail('');
         setPassword('')
 
@@ -49,28 +55,31 @@ export function NewVetItemModal({isOpen, onRequestClose} : NewVetItemModalProps)
                 <img src={closeImg} alt="Fecha"/>
             </button>
 
-            <Container onSubmit={handleCreateNewVetItem}>
-                <h2>Adicionar na Fila</h2>
+            <Container onSubmit={handleCreateNewVeterinaryItem}>
+                <h2>Adicionar Novo Veterinário</h2>
 
-                <input 
-                    placeholder="Veterinário"
-                    value={vet}
-                    onChange={event => setVet(event.target.value)}
+                <input
+                    placeholder="Nome"
+                    value={firstName}
+                    onChange={event => setFirstName(event.target.value)}
                 />
-
-                <input type="number"
-                    placeholder="CRMV"
-                    value={crmv}
-                    onChange={event => setCrmv(Number(event.target.value))}
+                <input
+                    placeholder="Sobrenome"
+                    value={lastName}
+                    onChange={event => setLastName(event.target.value)}
                 />
-
-                <input 
+                <input
+                    placeholder="CPF"
+                    value={cpf}
+                    onChange={event => setCpf(event.target.value)}
+                />
+                <input
                     placeholder="Email"
                     value={email}
                     onChange={event => setEmail(event.target.value)}
                 />
-
-                     <input 
+                <input
+                    type="password"
                     placeholder="Senha"
                     value={password}
                     onChange={event => setPassword(event.target.value)}

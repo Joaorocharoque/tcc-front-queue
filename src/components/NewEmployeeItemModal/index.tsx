@@ -21,7 +21,7 @@ export function NewEmployeeItemModal({isOpen, onRequestClose} : NewEmployeeItemM
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    async function handleCreateNewSecItem(event: FormEvent) {
+    async function handleCreateNewEmployeeItem(event: FormEvent) {
         event.preventDefault();
 
         await addToUser({
@@ -55,8 +55,8 @@ export function NewEmployeeItemModal({isOpen, onRequestClose} : NewEmployeeItemM
                 <img src={closeImg} alt="Fecha"/>
             </button>
 
-            <Container onSubmit={handleCreateNewSecItem}>
-                <h2>Adicionar Nova Secretaria</h2>
+            <Container onSubmit={handleCreateNewEmployeeItem}>
+                <h2>Adicionar Novo Funcionário</h2>
 
                 <input 
                     placeholder="Nome"
