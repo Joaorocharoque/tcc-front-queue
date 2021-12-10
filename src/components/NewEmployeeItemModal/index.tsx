@@ -15,24 +15,29 @@ interface NewEmployeeItemModalProps{
 export function NewEmployeeItemModal({isOpen, onRequestClose} : NewEmployeeItemModalProps) {
     const { addToUser } = useUsers();
 
-    const [sec, setSec] = useState('');
-    const [cpf, setCpf] = useState(0);
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [cpf, setCpf] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
 
     async function handleCreateNewSecItem(event: FormEvent) {
         event.preventDefault();
 
-        // await createSec({
-        //     sec,
-        //     cpf,
-        //     email,
-        //     password,
-        // })
+        await addToUser({
+            firstName,
+            lastName,
+            cpf,
+            email,
+            password,
+            category: 'EMPLOYEE',
+            profile: 'ADM',
+            pets: []
+        })
 
-        setSec('');
-        setCpf(0);
+        setFirstName('');
+        setLastName('');
+        setCpf('');
         setEmail('');
         setPassword('')
 
@@ -54,23 +59,27 @@ export function NewEmployeeItemModal({isOpen, onRequestClose} : NewEmployeeItemM
                 <h2>Adicionar Nova Secretaria</h2>
 
                 <input 
-                    placeholder="Secretaria"
-                    value={sec}
-                    onChange={event => setSec(event.target.value)}
+                    placeholder="Nome"
+                    value={firstName}
+                    onChange={event => setFirstName(event.target.value)}
+                />
+                <input
+                    placeholder="Sobrenome"
+                    value={lastName}
+                    onChange={event => setLastName(event.target.value)}
                 />
                 <input 
                     placeholder="CPF"
                     value={cpf}
-                    onChange={event => setCpf(Number(event.target.value))}
+                    onChange={event => setCpf(event.target.value)}
                 />
-
                 <input 
                     placeholder="Email"
                     value={email}
                     onChange={event => setEmail(event.target.value)}
                 />
-
-                <input 
+                <input
+                    type="password"
                     placeholder="Senha"
                     value={password}
                     onChange={event => setPassword(event.target.value)}

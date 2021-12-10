@@ -6,6 +6,18 @@ interface UserItem {
     firstName: string,
     lastName: string,
     cpf: string,
+    password: string,
+    email: string,
+    category: string,
+    profile: string,
+    pets: UserPetItem[]
+}
+
+interface UserItemInput {
+    firstName: string,
+    lastName: string,
+    cpf: string,
+    password: string,
     email: string,
     category: string,
     profile: string,
@@ -24,7 +36,7 @@ interface UserItemProviderProps {
 
 interface UserContextData {
     users: UserItem[],
-    addToUser: (userId: number) => Promise<void>;
+    addToUser: (userId: UserItemInput) => Promise<void>;
     deleteFromUser: (userId: number) => Promise<void>;
 }
 
@@ -42,9 +54,15 @@ export function UserProvider({ children } : UserItemProviderProps){
             })
     }, [])
 
-    async function addToUser(userId: number){
+    async function addToUser(user: UserItemInput){
         await api.post('/user/', {
-            userId
+            'firstName': user.firstName,
+            'lastName': user.lastName,
+            'cpf': user.cpf,
+            'password': user.password,
+            'email': user.email,
+            'category': user.category,
+            'profile': user.profile,
         })
 
         api.get('/user')

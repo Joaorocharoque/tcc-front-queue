@@ -4,7 +4,7 @@ import deleteImg from '../../assets/delete.png'
 
 
 export function TableEmployee() {
-    const { users } = useUsers()
+    const { users, deleteFromUser } = useUsers()
 
     return (
         <Container>
@@ -28,7 +28,7 @@ export function TableEmployee() {
                                 <td>{user.lastName}</td>
                                 <td>{user.email}</td>
                                 <td>{user.cpf}</td>
-                                <td><img src={deleteImg}></img></td>
+                                <td><img src={deleteImg} onClick={() => deleteFromUser(user.id)}></img></td>
                             </tr>
                         ))
                     }
