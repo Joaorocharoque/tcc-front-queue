@@ -18,7 +18,7 @@ export const Container = styled.form`
         
         width: 100%;
         padding: 0 1.5rem;
-        height: 4rem;
+        height: 3rem;
         border-radius: 0.25rem;
 
         border: 1px solid #d7d7d7;
